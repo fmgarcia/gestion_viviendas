@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Propietario {
+  id        Int        @id @default(autoincrement()) @db.UnsignedInt
+  nombre    String     @db.VarChar(150)
+  email     String?    @db.VarChar(150)
+  telefono  String?    @db.VarChar(30)
+  direccion String?    @db.VarChar(255)
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime?  @updatedAt @map("updated_at") @db.Timestamp(0)
+  viviendas Vivienda[]
+
+  @@map("propietarios")
+}
+
+model Vivienda {
+  id               BigInt                   @id @default(autoincrement()) @db.UnsignedBigInt
+  referencia       String?                  @db.VarChar(50)
+  direccion        String                   @db.VarChar(255)
+  ciudad           String                   @db.VarChar(100)
+  provincia        String                   @db.VarChar(100)
+  codigoPostal     String?                  @map("codigo_postal") @db.VarChar(20)
+  tipo             viviendas_tipo           @default(piso)
+  habitaciones     Int                      @default(1) @db.UnsignedTinyInt
+  banos            Int                      @default(1) @db.UnsignedTinyInt
+  metrosCuadrados  Int?                     @map("metros_cuadrados") @db.UnsignedInt
+  anoConstruccion  Int?                     @map("ano_construccion") @db.Year
+  planta           Int?                     @db.SmallInt
+  piscina          Boolean                  @default(false)
+  garaje           Boolean                  @default(false)
+  trastero         Boolean                  @default(false)
+  terraza          Boolean                  @default(false)
+  ascensor         Boolean                  @default(false)
+  calefaccion      viviendas_calefaccion?   @default(ninguna)
+  precio           Decimal                  @default(0.00) @db.Decimal(12, 2)
+  moneda           String                   @default("EUR") @db.Char(3)
+  tipoOperacion    viviendas_tipo_operacion @default(venta) @map("tipo_operacion")
+  estado           viviendas_estado         @default(disponible)
+  lat              Decimal?                 @db.Decimal(10, 7)
+  lng              Decimal?                 @db.Decimal(10, 7)
+  descripcion      String?                  @db.Text
+  imagenPrincipal  String?                  @map("imagen_principal") @db.VarChar(255)
+  propietarioId    Int?                     @map("propietario_id") @db.UnsignedInt
+  createdAt        DateTime                 @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt        DateTime?                @updatedAt @map("updated_at") @db.Timestamp(0)
+  modificationNote String?                  @map("modification_note") @db.VarChar(255)
+  propietario      Propietario?             @relation(fields: [propietarioId], references: [id], onUpdate: Restrict, map: "viviendas_ibfk_1")
+
+  @@index([propietarioId], map: "propietario_id")
+  @@index([ciudad], map: "idx_ciudad")
+  @@index([provincia], map: "idx_provincia")
+  @@index([tipoOperacion], map: "idx_tipo_operacion")
+  @@index([precio], map: "idx_precio")
+  @@index([habitaciones], map: "idx_habitaciones")
+  @@index([estado], map: "idx_estado")
+  @@map("viviendas")
+}
+
+enum viviendas_tipo {
+  piso
+  chalet
+  adosado
+  estudio
+  atico
+  local
+}
+
+enum viviendas_calefaccion {
+  ninguna
+  central
+  individual_gas
+  individual_electrica
+  otro
+}
+
+enum viviendas_tipo_operacion {
+  venta
+  alquiler
+  venta_alquiler @map("venta/alquiler")
+}
+
+enum viviendas_estado {
+  disponible
+  reservado
+  vendido
+  alquilado
+}

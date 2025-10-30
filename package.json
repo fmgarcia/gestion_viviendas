@@ -1,0 +1,26 @@
+{
+  "name": "gestion-viviendas",
+  "version": "1.0.0",
+  "description": "Aplicación completa para gestión de viviendas",
+  "private": true,
+  "scripts": {
+    "test:api": "jest --config=jest.config.js",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:accesibilidad": "playwright test tests/accesibilidad",
+    "test:funcional": "playwright test tests/funcional",
+    "test:all": "npm run test:api && npm run test:e2e",
+    "playwright:install": "playwright install"
+  },
+  "keywords": [
+    "viviendas",
+    "gestion",
+    "inmobiliaria"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.49.1"
+  }
+}
