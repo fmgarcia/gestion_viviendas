@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2025 a las 15:55:32
+-- Tiempo de generación: 30-10-2025 a las 19:42:52
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -89,9 +89,10 @@ CREATE TABLE `viviendas` (
 --
 
 INSERT INTO `viviendas` (`id`, `referencia`, `direccion`, `ciudad`, `provincia`, `codigo_postal`, `tipo`, `habitaciones`, `banos`, `metros_cuadrados`, `ano_construccion`, `planta`, `piscina`, `garaje`, `trastero`, `terraza`, `ascensor`, `calefaccion`, `precio`, `moneda`, `tipo_operacion`, `estado`, `lat`, `lng`, `descripcion`, `imagen_principal`, `propietario_id`, `created_at`, `updated_at`, `modification_note`) VALUES
-(1, 'REF-0001', 'C/ Gran Vía 12, 3ºA', 'Alicante', 'Alicante', '03001', 'piso', 3, 2, 95, 2005, 3, 0, 1, 1, 1, 1, 'individual_gas', '220000.00', 'EUR', 'venta', 'disponible', '38.3452000', '-0.4810000', 'Piso luminoso, cerca del centro, buenas comunicaciones.', NULL, 2, '2025-10-29 14:47:21', NULL, NULL),
 (2, 'REF-0002', 'Urb. Las Palmeras, Calle Lago 5', 'Benidorm', 'Alicante', '03501', 'chalet', 4, 3, 180, 1998, NULL, 1, 1, 1, 0, 0, 'central', '480000.00', 'EUR', 'venta', 'disponible', '38.5406000', '-0.1223000', 'Chalet independiente con jardín y piscina privada.', NULL, 1, '2025-10-29 14:47:21', NULL, NULL),
-(3, 'REF-0003', 'C/ Puerto, 6, 1º', 'Alicante', 'Alicante', '03002', 'estudio', 0, 1, 30, 2010, 1, 0, 0, 0, 1, 1, 'individual_electrica', '650.00', 'EUR', 'alquiler', 'disponible', '38.3459000', '-0.4816000', 'Estudio reformado, amueblado, ideal para estudiante.', NULL, 2, '2025-10-29 14:47:21', NULL, NULL);
+(3, 'REF-0003', 'C/ Puerto, 6, 1º', 'Alicante', 'Alicante', '03002', 'estudio', 0, 1, 30, 2010, 1, 0, 0, 0, 1, 1, 'individual_electrica', '650.00', 'EUR', 'alquiler', 'disponible', '38.3459000', '-0.4816000', 'Estudio reformado, amueblado, ideal para estudiante.', NULL, 2, '2025-10-29 14:47:21', NULL, NULL),
+(4, 'Fran', 'C/ Alcalde Ramón Orts Galán nº 6 Local 1F', 'Alicante', 'Alicante', '03001', 'piso', 2, 2, NULL, NULL, NULL, 0, 0, 0, 0, 0, 'ninguna', '20000.00', 'EUR', 'venta', 'disponible', NULL, NULL, NULL, 'https://img4.idealista.com/blur/WEB_DETAIL_TOP-XL-P/0/id.pro.es.image.master/25/c5/8a/1380266033.webp', NULL, '2025-10-30 16:41:25', '2025-10-30 16:41:25', NULL),
+(6, NULL, 'C/ Test Jest 123', 'Valencia', 'Valencia', '46001', 'piso', 3, 2, 90, NULL, NULL, 1, 0, 0, 0, 1, 'ninguna', '150000.00', 'EUR', 'venta', 'disponible', NULL, NULL, NULL, NULL, 1, '2025-10-30 17:08:59', '2025-10-30 17:08:59', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -130,7 +131,7 @@ ALTER TABLE `propietarios`
 -- AUTO_INCREMENT de la tabla `viviendas`
 --
 ALTER TABLE `viviendas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
